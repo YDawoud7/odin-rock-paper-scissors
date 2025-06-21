@@ -50,4 +50,12 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
+document.querySelectorAll(".choice").forEach(elem => {
+  console.log("hi");
+  elem.addEventListener("click", e => {
+    let c = getComputerChoice();
+    playRound(elem.getAttribute("value"), c);
+  });
+});
+
 // console.log("hi");
