@@ -35,7 +35,11 @@ const results = document.querySelector(".results");
 let humanScore = 0;
 let computerScore = 0;
 
+let gameOver = false;
+
 function playRound(humanChoice, computerChoice) {
+  if (gameOver) return;
+
   let h = choiceToNum(humanChoice);
   let c = choiceToNum(computerChoice);
 
@@ -50,6 +54,14 @@ function playRound(humanChoice, computerChoice) {
   else {
     // console.log(`Computer picked ${computerChoice}. You lost.`);
     results.textContent = `Computer picked ${computerChoice}. You lost. Your score: ${humanScore} Computer score: ${++computerScore}`;
+  }
+  if (humanScore == 5) {
+    results.textContent = "You reached 5 points and won the game! Reload to play again";
+    gameOver = true;
+  }
+  else if (computerScore == 5) {
+    results.textContent = "Computer reached 5 points. You lost! Reload to try again";
+    gameOver = true;
   }
 }
 
