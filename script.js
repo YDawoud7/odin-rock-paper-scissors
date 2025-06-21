@@ -30,6 +30,8 @@ function choiceToNum(choice) {
   else console.log("wtf2");
 }
 
+const results = document.querySelector(".results");
+
 let humanScore = 0;
 let computerScore = 0;
 
@@ -38,15 +40,16 @@ function playRound(humanChoice, computerChoice) {
   let c = choiceToNum(computerChoice);
 
   if (h == c) {
-    console.log(`Computer picked ${computerChoice}. You drew.`);
+    // console.log(`Computer picked ${computerChoice}. You drew.`);
+    results.textContent = `Computer picked ${computerChoice}. You drew. Your score: ${humanScore} Computer score: ${computerScore}`;
   }
   else if (h == (c+1)%3) {
-    console.log(`Computer picked ${computerChoice}. You won.`);
-    humanScore++;
+    // console.log(`Computer picked ${computerChoice}. You won.`);
+    results.textContent = `Computer picked ${computerChoice}. You won. Your score: ${++humanScore} Computer score: ${computerScore}`;
   }
   else {
-    console.log(`Computer picked ${computerChoice}. You lost.`);
-    computerScore++;
+    // console.log(`Computer picked ${computerChoice}. You lost.`);
+    results.textContent = `Computer picked ${computerChoice}. You lost. Your score: ${humanScore} Computer score: ${++computerScore}`;
   }
 }
 
